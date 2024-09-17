@@ -22,9 +22,15 @@ Partial Class frm_userMain
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        components = New System.ComponentModel.Container
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
-        Me.Text = "frm_userMain"
+        SuspendLayout()
+        ' 
+        ' frm_userMain
+        ' 
+        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleMode = AutoScaleMode.Font
+        ClientSize = New Size(1096, 554)
+        Name = "frm_userMain"
+        Text = "frm_userMain"
+        ResumeLayout(False)
     End Sub
 End Class

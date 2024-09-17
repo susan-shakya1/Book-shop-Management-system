@@ -36,15 +36,24 @@ Public Class frm_login
                         Dim role As String = dr.Item("role").ToString
 
                         If UCase(role) = "ADMIN" Then
-                            MsgBox("Welcome: " & name)
+                            Me.Hide()
+                            frm_adminMain.Show()
+                            frm_adminMain.Ibl_UserInfo.Text = "Login User:  " & name & "  Login Time: " & Date.Now.ToString("hh:mm:ss tt")
+
+
                         ElseIf UCase(role) = "USER" Then
-                            MsgBox("Welcome: " & name)
+                            Me.Hide()
+                            frm_userMain.Show()
 
                         End If
                     Else
                         MessageBox.Show("Warning : Invalid Username or password ?", "Book Shop", MessageBoxButtons.OK, MessageBoxIcon.Error
                           )
                     End If
+                    txt_password.Clear()
+                    txt_userName.Clear()
+
+
                 Else
                     MessageBox.Show("Warning : User Not Found ?", "Book Shop", MessageBoxButtons.OK, MessageBoxIcon.Exclamation
                         )
