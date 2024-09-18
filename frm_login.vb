@@ -38,12 +38,13 @@ Public Class frm_login
                         If UCase(role) = "ADMIN" Then
                             Me.Hide()
                             frm_adminMain.Show()
-                            frm_adminMain.Ibl_UserInfo.Text = "Login User:  " & name & "  Login Time: " & Date.Now.ToString("hh:mm:ss tt")
+                            frm_adminMain.Ibl_UserInfo.Text = "Login User:  " & name & "     Login Time: " & Date.Now.ToString("hh:mm:ss tt")
 
 
                         ElseIf UCase(role) = "USER" Then
                             Me.Hide()
                             frm_userMain.Show()
+                            frm_userMain.Ibl_userinfo.Text = "Login User:  " & name & "     Login Time: " & Date.Now.ToString("hh:mm:ss tt")
 
                         End If
                     Else

@@ -22,11 +22,20 @@ Partial Class frm_ManageBook
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Panel1 = New Panel()
         btn_Close = New Button()
         Label1 = New Label()
         TabControl1 = New TabControl()
         TabPage1 = New TabPage()
+        DataGridView1 = New DataGridView()
+        Column1 = New DataGridViewTextBoxColumn()
+        Column2 = New DataGridViewTextBoxColumn()
+        Column3 = New DataGridViewTextBoxColumn()
+        Column4 = New DataGridViewTextBoxColumn()
+        Column5 = New DataGridViewTextBoxColumn()
+        Column6 = New DataGridViewTextBoxColumn()
+        Column7 = New DataGridViewTextBoxColumn()
         TabPage2 = New TabPage()
         pic_bookimg = New PictureBox()
         btn_Search = New Button()
@@ -49,6 +58,8 @@ Partial Class frm_ManageBook
         txt_BookId = New TextBox()
         Panel1.SuspendLayout()
         TabControl1.SuspendLayout()
+        TabPage1.SuspendLayout()
+        CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         TabPage2.SuspendLayout()
         CType(pic_bookimg, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
@@ -104,6 +115,7 @@ Partial Class frm_ManageBook
         ' 
         ' TabPage1
         ' 
+        TabPage1.Controls.Add(DataGridView1)
         TabPage1.Location = New Point(4, 48)
         TabPage1.Name = "TabPage1"
         TabPage1.Padding = New Padding(3)
@@ -111,6 +123,93 @@ Partial Class frm_ManageBook
         TabPage1.TabIndex = 0
         TabPage1.Text = " BOOK LIST"
         TabPage1.UseVisualStyleBackColor = True
+        ' 
+        ' DataGridView1
+        ' 
+        DataGridView1.AllowUserToAddRows = False
+        DataGridView1.AllowUserToDeleteRows = False
+        DataGridView1.BackgroundColor = Color.White
+        DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DataGridView1.Columns.AddRange(New DataGridViewColumn() {Column1, Column2, Column3, Column4, Column5, Column6, Column7})
+        DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = SystemColors.Window
+        DataGridViewCellStyle1.Font = New Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        DataGridViewCellStyle1.ForeColor = SystemColors.ControlText
+        DataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
+        DataGridViewCellStyle1.SelectionForeColor = Color.Black
+        DataGridViewCellStyle1.WrapMode = DataGridViewTriState.False
+        DataGridView1.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridView1.Dock = DockStyle.Fill
+        DataGridView1.Location = New Point(3, 3)
+        DataGridView1.Name = "DataGridView1"
+        DataGridView1.ReadOnly = True
+        DataGridView1.RowHeadersVisible = False
+        DataGridView1.RowHeadersWidth = 51
+        DataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect
+        DataGridView1.Size = New Size(1100, 591)
+        DataGridView1.TabIndex = 0
+        ' 
+        ' Column1
+        ' 
+        Column1.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+        Column1.HeaderText = "#"
+        Column1.MinimumWidth = 6
+        Column1.Name = "Column1"
+        Column1.ReadOnly = True
+        Column1.Width = 49
+        ' 
+        ' Column2
+        ' 
+        Column2.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+        Column2.HeaderText = "BOOK ID"
+        Column2.MinimumWidth = 6
+        Column2.Name = "Column2"
+        Column2.ReadOnly = True
+        Column2.Width = 107
+        ' 
+        ' Column3
+        ' 
+        Column3.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        Column3.HeaderText = "BOOK NAME"
+        Column3.MinimumWidth = 6
+        Column3.Name = "Column3"
+        Column3.ReadOnly = True
+        ' 
+        ' Column4
+        ' 
+        Column4.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+        Column4.HeaderText = "AUTHOR"
+        Column4.MinimumWidth = 6
+        Column4.Name = "Column4"
+        Column4.ReadOnly = True
+        Column4.Width = 106
+        ' 
+        ' Column5
+        ' 
+        Column5.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+        Column5.HeaderText = "PRICE"
+        Column5.MinimumWidth = 6
+        Column5.Name = "Column5"
+        Column5.ReadOnly = True
+        Column5.Width = 84
+        ' 
+        ' Column6
+        ' 
+        Column6.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+        Column6.HeaderText = "TAX %"
+        Column6.MinimumWidth = 6
+        Column6.Name = "Column6"
+        Column6.ReadOnly = True
+        Column6.Width = 87
+        ' 
+        ' Column7
+        ' 
+        Column7.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+        Column7.HeaderText = "TOTOL PRICE"
+        Column7.MinimumWidth = 6
+        Column7.Name = "Column7"
+        Column7.ReadOnly = True
+        Column7.Width = 138
         ' 
         ' TabPage2
         ' 
@@ -354,6 +453,8 @@ Partial Class frm_ManageBook
         Panel1.ResumeLayout(False)
         Panel1.PerformLayout()
         TabControl1.ResumeLayout(False)
+        TabPage1.ResumeLayout(False)
+        CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
         TabPage2.ResumeLayout(False)
         TabPage2.PerformLayout()
         CType(pic_bookimg, ComponentModel.ISupportInitialize).EndInit()
@@ -385,4 +486,12 @@ Partial Class frm_ManageBook
     Friend WithEvents txt_Search As TextBox
     Friend WithEvents Label2 As Label
     Friend WithEvents txt_BookId As TextBox
+    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents Column1 As DataGridViewTextBoxColumn
+    Friend WithEvents Column2 As DataGridViewTextBoxColumn
+    Friend WithEvents Column3 As DataGridViewTextBoxColumn
+    Friend WithEvents Column4 As DataGridViewTextBoxColumn
+    Friend WithEvents Column5 As DataGridViewTextBoxColumn
+    Friend WithEvents Column6 As DataGridViewTextBoxColumn
+    Friend WithEvents Column7 As DataGridViewTextBoxColumn
 End Class

@@ -166,6 +166,7 @@ Partial Class frm_adminMain
         Name = "frm_adminMain"
         StartPosition = FormStartPosition.CenterScreen
         Text = "frm_adminMain"
+        WindowState = FormWindowState.Maximized
         Panel1.ResumeLayout(False)
         Panel1.PerformLayout()
         TableLayoutPanel1.ResumeLayout(False)
