@@ -44,7 +44,7 @@ Partial Class frm_adminMain
         Panel1.Dock = DockStyle.Top
         Panel1.Location = New Point(0, 0)
         Panel1.Name = "Panel1"
-        Panel1.Size = New Size(1201, 84)
+        Panel1.Size = New Size(1842, 84)
         Panel1.TabIndex = 0
         ' 
         ' Logo
@@ -70,7 +70,7 @@ Partial Class frm_adminMain
         TableLayoutPanel1.Controls.Add(btn_Report, 2, 0)
         TableLayoutPanel1.Controls.Add(btn_Exit, 3, 0)
         TableLayoutPanel1.Controls.Add(btn_ManageBook, 0, 0)
-        TableLayoutPanel1.Location = New Point(596, 3)
+        TableLayoutPanel1.Location = New Point(1237, 3)
         TableLayoutPanel1.Name = "TableLayoutPanel1"
         TableLayoutPanel1.RowCount = 1
         TableLayoutPanel1.RowStyles.Add(New RowStyle(SizeType.Percent, 100F))
@@ -138,9 +138,9 @@ Partial Class frm_adminMain
         Panel2.BackColor = Color.WhiteSmoke
         Panel2.Controls.Add(Ibl_UserInfo)
         Panel2.Dock = DockStyle.Bottom
-        Panel2.Location = New Point(0, 633)
+        Panel2.Location = New Point(0, 830)
         Panel2.Name = "Panel2"
-        Panel2.Size = New Size(1201, 72)
+        Panel2.Size = New Size(1842, 72)
         Panel2.TabIndex = 1
         ' 
         ' Ibl_UserInfo
@@ -158,7 +158,7 @@ Partial Class frm_adminMain
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
-        ClientSize = New Size(1201, 705)
+        ClientSize = New Size(1842, 902)
         Controls.Add(Panel2)
         Controls.Add(Panel1)
         Cursor = Cursors.Hand
