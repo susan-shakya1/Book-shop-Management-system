@@ -22,7 +22,7 @@ Partial Class frm_userMain
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Panel1 = New Panel()
         TableLayoutPanel2 = New TableLayoutPanel()
         btn_ManageUser = New Button()
@@ -41,6 +41,7 @@ Partial Class frm_userMain
         Ibl_userinfo = New Label()
         TableLayoutPanel1 = New TableLayoutPanel()
         DataGridView1 = New DataGridView()
+        FlowLayoutPanel1 = New FlowLayoutPanel()
         Column1 = New DataGridViewTextBoxColumn()
         Column2 = New DataGridViewTextBoxColumn()
         Column3 = New DataGridViewTextBoxColumn()
@@ -48,7 +49,7 @@ Partial Class frm_userMain
         Column5 = New DataGridViewTextBoxColumn()
         Column6 = New DataGridViewTextBoxColumn()
         Column7 = New DataGridViewTextBoxColumn()
-        FlowLayoutPanel1 = New FlowLayoutPanel()
+        Ibl_GrandTotal = New Label()
         Panel1.SuspendLayout()
         TableLayoutPanel2.SuspendLayout()
         Panel2.SuspendLayout()
@@ -166,6 +167,7 @@ Partial Class frm_userMain
         ' Panel2
         ' 
         Panel2.BackColor = Color.White
+        Panel2.Controls.Add(Ibl_GrandTotal)
         Panel2.Controls.Add(txt_Search)
         Panel2.Controls.Add(Label6)
         Panel2.Controls.Add(Label3)
@@ -280,14 +282,14 @@ Partial Class frm_userMain
         DataGridView1.AllowUserToAddRows = False
         DataGridView1.AllowUserToDeleteRows = False
         DataGridView1.BackgroundColor = Color.White
-        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = SystemColors.Control
-        DataGridViewCellStyle2.Font = New Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
-        DataGridViewCellStyle2.SelectionBackColor = Color.White
-        DataGridViewCellStyle2.SelectionForeColor = Color.Black
-        DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
-        DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = SystemColors.Control
+        DataGridViewCellStyle1.Font = New Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        DataGridViewCellStyle1.ForeColor = SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = Color.White
+        DataGridViewCellStyle1.SelectionForeColor = Color.Black
+        DataGridViewCellStyle1.WrapMode = DataGridViewTriState.True
+        DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         DataGridView1.ColumnHeadersHeight = 28
         DataGridView1.Columns.AddRange(New DataGridViewColumn() {Column1, Column2, Column3, Column4, Column5, Column6, Column7})
         DataGridView1.Dock = DockStyle.Fill
@@ -298,6 +300,14 @@ Partial Class frm_userMain
         DataGridView1.RowHeadersWidth = 51
         DataGridView1.Size = New Size(504, 464)
         DataGridView1.TabIndex = 0
+        ' 
+        ' FlowLayoutPanel1
+        ' 
+        FlowLayoutPanel1.Dock = DockStyle.Fill
+        FlowLayoutPanel1.Location = New Point(3, 3)
+        FlowLayoutPanel1.Name = "FlowLayoutPanel1"
+        FlowLayoutPanel1.Size = New Size(854, 464)
+        FlowLayoutPanel1.TabIndex = 0
         ' 
         ' Column1
         ' 
@@ -332,6 +342,7 @@ Partial Class frm_userMain
         Column4.MinimumWidth = 6
         Column4.Name = "Column4"
         Column4.ReadOnly = True
+        Column4.Visible = False
         Column4.Width = 108
         ' 
         ' Column5
@@ -341,6 +352,7 @@ Partial Class frm_userMain
         Column5.MinimumWidth = 6
         Column5.Name = "Column5"
         Column5.ReadOnly = True
+        Column5.Visible = False
         Column5.Width = 85
         ' 
         ' Column6
@@ -350,6 +362,7 @@ Partial Class frm_userMain
         Column6.MinimumWidth = 6
         Column6.Name = "Column6"
         Column6.ReadOnly = True
+        Column6.Visible = False
         Column6.Width = 88
         ' 
         ' Column7
@@ -361,13 +374,17 @@ Partial Class frm_userMain
         Column7.ReadOnly = True
         Column7.Width = 137
         ' 
-        ' FlowLayoutPanel1
+        ' Ibl_GrandTotal
         ' 
-        FlowLayoutPanel1.Dock = DockStyle.Fill
-        FlowLayoutPanel1.Location = New Point(3, 3)
-        FlowLayoutPanel1.Name = "FlowLayoutPanel1"
-        FlowLayoutPanel1.Size = New Size(854, 464)
-        FlowLayoutPanel1.TabIndex = 0
+        Ibl_GrandTotal.Anchor = AnchorStyles.Top
+        Ibl_GrandTotal.Font = New Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Ibl_GrandTotal.ForeColor = SystemColors.HotTrack
+        Ibl_GrandTotal.Location = New Point(863, 69)
+        Ibl_GrandTotal.Name = "Ibl_GrandTotal"
+        Ibl_GrandTotal.Size = New Size(504, 64)
+        Ibl_GrandTotal.TabIndex = 2
+        Ibl_GrandTotal.Text = "0.00"
+        Ibl_GrandTotal.TextAlign = ContentAlignment.MiddleRight
         ' 
         ' frm_userMain
         ' 
@@ -424,4 +441,6 @@ Partial Class frm_userMain
     Friend WithEvents Column5 As DataGridViewTextBoxColumn
     Friend WithEvents Column6 As DataGridViewTextBoxColumn
     Friend WithEvents Column7 As DataGridViewTextBoxColumn
+    Friend WithEvents Label4 As Label
+    Friend WithEvents Ibl_GrandTotal As Label
 End Class
