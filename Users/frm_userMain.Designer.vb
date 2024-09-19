@@ -22,15 +22,17 @@ Partial Class frm_userMain
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        components = New ComponentModel.Container()
+        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Panel1 = New Panel()
         TableLayoutPanel2 = New TableLayoutPanel()
-        btn_ManageUser = New Button()
+        btn_Cancel = New Button()
         btn_Report = New Button()
         btn_Exit = New Button()
         btn_ManageBook = New Button()
         Label1 = New Label()
         Panel2 = New Panel()
+        Ibl_GrandTotal = New Label()
         txt_Search = New TextBox()
         Label6 = New Label()
         Label3 = New Label()
@@ -38,10 +40,13 @@ Partial Class frm_userMain
         Ibl_TransactionNo = New Label()
         Label2 = New Label()
         Panel3 = New Panel()
+        Panel4 = New Panel()
+        btn_Pay = New Button()
+        Label4 = New Label()
+        txt_enteramount = New TextBox()
         Ibl_userinfo = New Label()
         TableLayoutPanel1 = New TableLayoutPanel()
         DataGridView1 = New DataGridView()
-        FlowLayoutPanel1 = New FlowLayoutPanel()
         Column1 = New DataGridViewTextBoxColumn()
         Column2 = New DataGridViewTextBoxColumn()
         Column3 = New DataGridViewTextBoxColumn()
@@ -49,11 +54,13 @@ Partial Class frm_userMain
         Column5 = New DataGridViewTextBoxColumn()
         Column6 = New DataGridViewTextBoxColumn()
         Column7 = New DataGridViewTextBoxColumn()
-        Ibl_GrandTotal = New Label()
+        FlowLayoutPanel1 = New FlowLayoutPanel()
+        Timer1 = New Timer(components)
         Panel1.SuspendLayout()
         TableLayoutPanel2.SuspendLayout()
         Panel2.SuspendLayout()
         Panel3.SuspendLayout()
+        Panel4.SuspendLayout()
         TableLayoutPanel1.SuspendLayout()
         CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
@@ -77,7 +84,7 @@ Partial Class frm_userMain
         TableLayoutPanel2.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 25F))
         TableLayoutPanel2.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 25F))
         TableLayoutPanel2.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 25F))
-        TableLayoutPanel2.Controls.Add(btn_ManageUser, 1, 0)
+        TableLayoutPanel2.Controls.Add(btn_Cancel, 1, 0)
         TableLayoutPanel2.Controls.Add(btn_Report, 2, 0)
         TableLayoutPanel2.Controls.Add(btn_Exit, 3, 0)
         TableLayoutPanel2.Controls.Add(btn_ManageBook, 0, 0)
@@ -88,21 +95,21 @@ Partial Class frm_userMain
         TableLayoutPanel2.Size = New Size(605, 63)
         TableLayoutPanel2.TabIndex = 1
         ' 
-        ' btn_ManageUser
+        ' btn_Cancel
         ' 
-        btn_ManageUser.BackColor = SystemColors.Highlight
-        btn_ManageUser.Dock = DockStyle.Fill
-        btn_ManageUser.FlatAppearance.BorderSize = 0
-        btn_ManageUser.FlatAppearance.MouseOverBackColor = Color.Firebrick
-        btn_ManageUser.FlatStyle = FlatStyle.Flat
-        btn_ManageUser.Font = New Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        btn_ManageUser.ForeColor = Color.White
-        btn_ManageUser.Location = New Point(154, 3)
-        btn_ManageUser.Name = "btn_ManageUser"
-        btn_ManageUser.Size = New Size(145, 57)
-        btn_ManageUser.TabIndex = 0
-        btn_ManageUser.Text = "[ F2 - CANCEL ]"
-        btn_ManageUser.UseVisualStyleBackColor = False
+        btn_Cancel.BackColor = SystemColors.Highlight
+        btn_Cancel.Dock = DockStyle.Fill
+        btn_Cancel.FlatAppearance.BorderSize = 0
+        btn_Cancel.FlatAppearance.MouseOverBackColor = Color.Firebrick
+        btn_Cancel.FlatStyle = FlatStyle.Flat
+        btn_Cancel.Font = New Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        btn_Cancel.ForeColor = Color.White
+        btn_Cancel.Location = New Point(154, 3)
+        btn_Cancel.Name = "btn_Cancel"
+        btn_Cancel.Size = New Size(145, 57)
+        btn_Cancel.TabIndex = 0
+        btn_Cancel.Text = "[ F2 - CANCEL ]"
+        btn_Cancel.UseVisualStyleBackColor = False
         ' 
         ' btn_Report
         ' 
@@ -180,6 +187,18 @@ Partial Class frm_userMain
         Panel2.Size = New Size(1370, 133)
         Panel2.TabIndex = 1
         ' 
+        ' Ibl_GrandTotal
+        ' 
+        Ibl_GrandTotal.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        Ibl_GrandTotal.Font = New Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Ibl_GrandTotal.ForeColor = SystemColors.HotTrack
+        Ibl_GrandTotal.Location = New Point(863, 69)
+        Ibl_GrandTotal.Name = "Ibl_GrandTotal"
+        Ibl_GrandTotal.Size = New Size(495, 64)
+        Ibl_GrandTotal.TabIndex = 2
+        Ibl_GrandTotal.Text = "0.00"
+        Ibl_GrandTotal.TextAlign = ContentAlignment.MiddleRight
+        ' 
         ' txt_Search
         ' 
         txt_Search.BackColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
@@ -243,12 +262,59 @@ Partial Class frm_userMain
         ' Panel3
         ' 
         Panel3.BackColor = Color.White
+        Panel3.Controls.Add(Panel4)
         Panel3.Controls.Add(Ibl_userinfo)
         Panel3.Dock = DockStyle.Bottom
-        Panel3.Location = New Point(0, 687)
+        Panel3.Location = New Point(0, 663)
         Panel3.Name = "Panel3"
-        Panel3.Size = New Size(1370, 72)
+        Panel3.Size = New Size(1370, 96)
         Panel3.TabIndex = 2
+        ' 
+        ' Panel4
+        ' 
+        Panel4.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        Panel4.BackColor = Color.FromArgb(CByte(42), CByte(42), CByte(42))
+        Panel4.Controls.Add(btn_Pay)
+        Panel4.Controls.Add(Label4)
+        Panel4.Controls.Add(txt_enteramount)
+        Panel4.Location = New Point(659, 0)
+        Panel4.Name = "Panel4"
+        Panel4.Size = New Size(711, 96)
+        Panel4.TabIndex = 1
+        ' 
+        ' btn_Pay
+        ' 
+        btn_Pay.BackColor = SystemColors.HotTrack
+        btn_Pay.Cursor = Cursors.Hand
+        btn_Pay.FlatAppearance.BorderSize = 0
+        btn_Pay.FlatStyle = FlatStyle.Flat
+        btn_Pay.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        btn_Pay.ForeColor = Color.White
+        btn_Pay.Location = New Point(308, 36)
+        btn_Pay.Name = "btn_Pay"
+        btn_Pay.Size = New Size(417, 35)
+        btn_Pay.TabIndex = 2
+        btn_Pay.Text = "PAY"
+        btn_Pay.UseVisualStyleBackColor = False
+        ' 
+        ' Label4
+        ' 
+        Label4.AutoSize = True
+        Label4.ForeColor = Color.White
+        Label4.Location = New Point(21, 8)
+        Label4.Name = "Label4"
+        Label4.Size = New Size(148, 25)
+        Label4.TabIndex = 1
+        Label4.Text = "Enter Amount /-"
+        ' 
+        ' txt_enteramount
+        ' 
+        txt_enteramount.Font = New Font("Segoe UI Semibold", 14F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        txt_enteramount.Location = New Point(21, 36)
+        txt_enteramount.Name = "txt_enteramount"
+        txt_enteramount.Size = New Size(255, 39)
+        txt_enteramount.TabIndex = 0
+        txt_enteramount.TextAlign = HorizontalAlignment.Right
         ' 
         ' Ibl_userinfo
         ' 
@@ -256,7 +322,7 @@ Partial Class frm_userMain
         Ibl_userinfo.BackColor = Color.Transparent
         Ibl_userinfo.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Ibl_userinfo.ForeColor = Color.DimGray
-        Ibl_userinfo.Location = New Point(67, 23)
+        Ibl_userinfo.Location = New Point(67, 36)
         Ibl_userinfo.Name = "Ibl_userinfo"
         Ibl_userinfo.Size = New Size(211, 28)
         Ibl_userinfo.TabIndex = 0
@@ -274,7 +340,7 @@ Partial Class frm_userMain
         TableLayoutPanel1.Name = "TableLayoutPanel1"
         TableLayoutPanel1.RowCount = 1
         TableLayoutPanel1.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
-        TableLayoutPanel1.Size = New Size(1370, 470)
+        TableLayoutPanel1.Size = New Size(1370, 446)
         TableLayoutPanel1.TabIndex = 3
         ' 
         ' DataGridView1
@@ -282,14 +348,14 @@ Partial Class frm_userMain
         DataGridView1.AllowUserToAddRows = False
         DataGridView1.AllowUserToDeleteRows = False
         DataGridView1.BackgroundColor = Color.White
-        DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = SystemColors.Control
-        DataGridViewCellStyle1.Font = New Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        DataGridViewCellStyle1.ForeColor = SystemColors.WindowText
-        DataGridViewCellStyle1.SelectionBackColor = Color.White
-        DataGridViewCellStyle1.SelectionForeColor = Color.Black
-        DataGridViewCellStyle1.WrapMode = DataGridViewTriState.True
-        DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = SystemColors.Control
+        DataGridViewCellStyle2.Font = New Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
+        DataGridViewCellStyle2.SelectionBackColor = Color.White
+        DataGridViewCellStyle2.SelectionForeColor = Color.Black
+        DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
+        DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         DataGridView1.ColumnHeadersHeight = 28
         DataGridView1.Columns.AddRange(New DataGridViewColumn() {Column1, Column2, Column3, Column4, Column5, Column6, Column7})
         DataGridView1.Dock = DockStyle.Fill
@@ -298,16 +364,8 @@ Partial Class frm_userMain
         DataGridView1.ReadOnly = True
         DataGridView1.RowHeadersVisible = False
         DataGridView1.RowHeadersWidth = 51
-        DataGridView1.Size = New Size(504, 464)
+        DataGridView1.Size = New Size(504, 440)
         DataGridView1.TabIndex = 0
-        ' 
-        ' FlowLayoutPanel1
-        ' 
-        FlowLayoutPanel1.Dock = DockStyle.Fill
-        FlowLayoutPanel1.Location = New Point(3, 3)
-        FlowLayoutPanel1.Name = "FlowLayoutPanel1"
-        FlowLayoutPanel1.Size = New Size(854, 464)
-        FlowLayoutPanel1.TabIndex = 0
         ' 
         ' Column1
         ' 
@@ -343,7 +401,7 @@ Partial Class frm_userMain
         Column4.Name = "Column4"
         Column4.ReadOnly = True
         Column4.Visible = False
-        Column4.Width = 108
+        Column4.Width = 125
         ' 
         ' Column5
         ' 
@@ -353,7 +411,7 @@ Partial Class frm_userMain
         Column5.Name = "Column5"
         Column5.ReadOnly = True
         Column5.Visible = False
-        Column5.Width = 85
+        Column5.Width = 125
         ' 
         ' Column6
         ' 
@@ -363,7 +421,7 @@ Partial Class frm_userMain
         Column6.Name = "Column6"
         Column6.ReadOnly = True
         Column6.Visible = False
-        Column6.Width = 88
+        Column6.Width = 125
         ' 
         ' Column7
         ' 
@@ -374,17 +432,17 @@ Partial Class frm_userMain
         Column7.ReadOnly = True
         Column7.Width = 137
         ' 
-        ' Ibl_GrandTotal
+        ' FlowLayoutPanel1
         ' 
-        Ibl_GrandTotal.Anchor = AnchorStyles.Top
-        Ibl_GrandTotal.Font = New Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Ibl_GrandTotal.ForeColor = SystemColors.HotTrack
-        Ibl_GrandTotal.Location = New Point(863, 69)
-        Ibl_GrandTotal.Name = "Ibl_GrandTotal"
-        Ibl_GrandTotal.Size = New Size(504, 64)
-        Ibl_GrandTotal.TabIndex = 2
-        Ibl_GrandTotal.Text = "0.00"
-        Ibl_GrandTotal.TextAlign = ContentAlignment.MiddleRight
+        FlowLayoutPanel1.Dock = DockStyle.Fill
+        FlowLayoutPanel1.Location = New Point(3, 3)
+        FlowLayoutPanel1.Name = "FlowLayoutPanel1"
+        FlowLayoutPanel1.Size = New Size(854, 440)
+        FlowLayoutPanel1.TabIndex = 0
+        ' 
+        ' Timer1
+        ' 
+        Timer1.Enabled = True
         ' 
         ' frm_userMain
         ' 
@@ -410,6 +468,8 @@ Partial Class frm_userMain
         Panel2.PerformLayout()
         Panel3.ResumeLayout(False)
         Panel3.PerformLayout()
+        Panel4.ResumeLayout(False)
+        Panel4.PerformLayout()
         TableLayoutPanel1.ResumeLayout(False)
         CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
@@ -424,7 +484,7 @@ Partial Class frm_userMain
     Friend WithEvents Label1 As Label
     Friend WithEvents Ibl_userinfo As Label
     Friend WithEvents TableLayoutPanel2 As TableLayoutPanel
-    Friend WithEvents btn_ManageUser As Button
+    Friend WithEvents btn_Cancel As Button
     Friend WithEvents btn_Report As Button
     Friend WithEvents btn_Exit As Button
     Friend WithEvents btn_ManageBook As Button
@@ -443,4 +503,8 @@ Partial Class frm_userMain
     Friend WithEvents Column7 As DataGridViewTextBoxColumn
     Friend WithEvents Label4 As Label
     Friend WithEvents Ibl_GrandTotal As Label
+    Friend WithEvents Timer1 As Timer
+    Friend WithEvents Panel4 As Panel
+    Friend WithEvents txt_enteramount As TextBox
+    Friend WithEvents btn_Pay As Button
 End Class

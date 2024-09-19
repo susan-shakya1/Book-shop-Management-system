@@ -19,7 +19,7 @@ Public Class frm_ManageBook
             cmd = New MySqlCommand("SELECT `bookid`,`bookname`,`author`,`price`,`tax`,`totalprice` FROM `tbl_bookmaster1` ", conn)
             dr = cmd.ExecuteReader
             While dr.Read = True
-                DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, dr.Item("bookid"), dr.Item("bookname"), dr.Item("author"), dr.Item("price"), dr.Item("tax"), dr.Item("totalprice")
+                DataGridView1.Rows.Add(DataGridView1.Rows.Count + 1, dr.Item("bookid"), dr.Item("bookname"), dr.Item("author"), dr.Item("price"), dr.Item("tax"), dr.Item("totalprice"))
 
             End While
         Catch ex As Exception
