@@ -19,15 +19,14 @@
         frm_login.ShowDialog()
     End Sub
 
-    Private Sub Logo_Click(sender As Object, e As EventArgs) Handles Logo.Click
+    Sub Get_Dashboard()
 
     End Sub
 
-    Private Sub Ibl_UserInfo_Click(sender As Object, e As EventArgs) Handles Ibl_UserInfo.Click
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        Get_Dashboard()
+        Ibl_Date.Text = Date.Now.ToString("dddd MMM-yyyy")
+        Ibl_Time.Text = Date.Now.ToString("hh:mm:ss tt")
 
-    End Sub
-
-    Private Sub frm_adminMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        dbconn()
     End Sub
 End Class
