@@ -43,13 +43,13 @@ Public Class frm_ManageBook
     End Sub
 
     Public Sub Auto_bookid()
-        txt_BookId.Clear()
+
         Try
             conn.Open()
             cmd = New MySqlCommand("SELECT * FROM `tbl_bookmaster1` WHERE bookid order by id desc", conn)
             dr = cmd.ExecuteReader
             dr.Read()
-            If dr.Read = True Then
+            If dr.HasRows = True Then
                 txt_BookId.Text = dr.Item("bookid").ToString + 1
             Else
                 txt_BookId.Text = Date.Now.ToString("yyyy") & "001"
@@ -57,8 +57,7 @@ Public Class frm_ManageBook
             End If
 
         Catch ex As Exception
-            MsgBox(ex.Message
-                   )
+            MsgBox(ex.Message)
 
         End Try
         conn.Close()
@@ -70,9 +69,7 @@ Public Class frm_ManageBook
 
     End Sub
 
-    Private Sub frm_(sender As Object, e As EventArgs)
 
-    End Sub
 
     Private Sub pic_bookimg_Click(sender As Object, e As EventArgs) Handles pic_bookimg.Click
         Dim pop As OpenFileDialog = New OpenFileDialog
