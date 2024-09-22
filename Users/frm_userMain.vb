@@ -162,17 +162,18 @@ Public Class frm_userMain
     End Sub
 
     Private Sub btn_Pay_Click(sender As Object, e As EventArgs) Handles btn_Pay.Click
-        If Ibl_GrandTotal.Text > txt_enteramount.Text Then
+        If Convert.ToDecimal(Ibl_GrandTotal.Text) > Convert.ToDecimal(txt_enteramount.Text) Then
             MsgBox("Infinity Balance", vbExclamation)
             Return
         Else
             Try
                 conn.Open()
-                cmd = New MySqlCommand("INSERT INTO `tblbookinventory`(`ID`, `transno`, `transdate`, `transmonth`, `bookid`, `bookname`, `author`, `price`, `tax`, `totalprice`, `grandtotal`) VALUES (@transdate,@transmonth,@bookid,@bookname,@author,@price,@tax,@totalprice,@grandtotal)", conn)
+                cmd = New MySqlCommand("INSERT INTO `tblbookinventory`( `transno`, `transdate`, `transmonth`, `bookid`, `bookname`, `author`, `price`, `tax`, `totalprice`, `grandtotal`) VALUES (@transno,@transdate,@transmonth,@bookid,@bookname,@author,@price,@tax,@totalprice,@grandtotal)", conn)
                 For j As Integer = 0 To DataGridView1.Rows.Count() - 1 Step +1
+
                     cmd.Parameters.Clear()
                     cmd.Parameters.AddWithValue("@transno", Ibl_TransactionNo.Text)
-                    cmd.Parameters.AddWithValue("@transno", Ibl_TranscationDate.Text)
+                    cmd.Parameters.AddWithValue("@transdate", Ibl_TranscationDate.Text)
                     cmd.Parameters.AddWithValue("@transmonth", Date.Now().ToString("MM"))
 
                     cmd.Parameters.AddWithValue("@bookid", DataGridView1.Rows(j).Cells(1).Value)
